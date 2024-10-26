@@ -1,0 +1,418 @@
+/**
+ * Nguyễn Thị Chúc Ngân
+ * 21130451
+ * Khóa 47
+ * 0869769142
+ * Lớp DH21DTC
+ */
+$primary-white: #ffffff;
+$primary-gray: #2a2626;
+$primary-border: #dddddd;
+$color-white: #ffffff;
+$color-title: #0f67be;
+$color-high-score: #FFD700;
+$color-score: #32CD32;
+$border-1: #87CEEB;
+$border-2: #4682B4;
+$border-3: #4169E1;
+$color-snake: #414141;
+$border-snake: #5a5a5a;
+$color-food: #f50529;
+$color-button: #4CAF50;
+$hover-button: #45a049;
+$border-food: #999;
+
+
+@mixin d-flex($display, $justify-content, $align-items) {
+  display: $display;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+
+@mixin border-game($border, $borderRadius, $boxShadow) {
+  border: $border;
+  border-radius: $borderRadius;
+  box-shadow: $boxShadow;
+  overflow: hidden;
+}
+
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  @include d-flex(flex, center, center);
+  min-height: 100vh;
+  font-family: "Permanent Marker", cursive;
+
+  .main {
+    min-height: 100vh;
+    width: 100%;
+
+    .container {
+      position: relative;
+      margin: 10px 50px;
+
+
+      .background {
+        .background-snake {
+          display: block;
+          position: relative;
+          width: 100%;
+          border: 10px solid $border-snake;
+          border-radius: 10px;
+        }
+      }
+
+      .snakes {
+        .title-game {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 10px 20px;
+          color: #fff;
+          font-size: 40px;
+          background: linear-gradient(to bottom, $color-food, #000000);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .options {
+          display:  block;
+          position: absolute;
+          top: 30%;
+          left: 20%;
+
+          .game, .settings {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+
+            .card {
+              width: 200px;
+              height: 200px;
+              background: $primary-white;
+              margin-bottom: 20px;
+              border: 5px solid $primary-gray;
+              border-radius: 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 24px;
+              font-weight: bold;
+              text-align: center;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            }
+
+            .card:hover {
+              transform: scale(1.05);
+              box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+            }
+
+          }
+        }
+        .popup {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 9999;
+        }
+
+        .popup-content {
+          max-height: 80%;
+          overflow-y: auto;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          text-align: center;
+        }
+
+        .popup-content button {
+          margin-top: 10px;
+        }
+        .options_level {
+          display: none;
+          position: absolute;
+          top: 30%;
+          left: 20%;
+
+          .game, .settings {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+
+            .card {
+              width: 200px;
+              height: 200px;
+              background: $primary-white;
+              margin-bottom: 20px;
+              border: 5px solid $primary-gray;
+              border-radius: 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 24px;
+              font-weight: bold;
+              text-align: center;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            }
+
+            .card:hover {
+              transform: scale(1.05);
+              box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+            }
+
+          }
+        }
+
+      }
+    }
+
+    .container-2 {
+      margin: 0 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+
+      .snakes {
+        display: flex;
+        width: 100%;
+
+        .left {
+          flex: 0 0 75%;
+          height: 90vh;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-align: center;
+          margin: 15px 0;
+          .logo{
+            position: absolute;
+            top: 50%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+            #instruction-text{
+              font-size: 30px;
+              color: #32CD32;
+            }
+          }
+          .game-border-1 {
+            @include border-game($border-1 solid 10px, 30px, inset 0 0 0 10px $border-1);
+
+            .game-border-2 {
+              @include border-game($border-2 solid 8px, 26px, inset 0 0 0 10px $border-2);
+
+              .game-border-3 {
+                @include border-game($border-3 solid 30px, 20px, inset 0 0 0 10px $border-3);
+
+                #game-board {
+                  background-color: #2a2626;
+                  align-content: space-between;
+                  display: grid;
+                  grid-template-columns: repeat(30, 30px);
+                  grid-template-rows: repeat(20, 30px);
+                  margin: 5px;
+                  height: 630px;
+                  width: 900px;
+                  overflow: hidden;
+                  position: relative;
+                }
+                .obstacle {
+                  width: 30px;
+                  height: 30px;
+                  background-color: #0f67be;
+                  border-radius: 10px;
+                }
+                .obstacle:hover {
+                  transform: scale(1.1);
+                }
+
+                .snake {
+                  background-color: #ffffff;
+                  border-radius: 10px;
+                  border: 1px solid $primary-gray;
+                  transition: transform 0.3s ease;
+                  box-shadow: 0 0 10px rgb(183, 84, 84);
+                }
+
+                .snake-head {
+                  background-color: #dcbb18;
+                }
+
+                .food {
+                  background-color: #fa1606;
+                  border: 2px solid #bd4a4a;
+                  border-radius: 50%;
+                }
+                .poisonous-mushroom{
+                  background-color: #cb10ff;
+                  border: 2px solid #bd4a4a;
+                  border-radius: 30%;
+                }
+
+                .black-hole {
+                  width: 30px;
+                  height: 30px;
+                  background-color: #862e2b;
+                  border-radius: 50%;
+                }
+                .moving-food {
+                  width: 30px;
+                  height: 30px;
+                  background-color: red;
+                  border-radius: 50%;
+                  position: absolute;
+                }
+
+                /* Thêm animation cho mồi di chuyển */
+                @keyframes movingAnimation {
+                  0% {
+                    transform: scale(1);
+                  }
+                  50% {
+                    transform: scale(1.1);
+                  }
+                  100% {
+                    transform: scale(1);
+                  }
+                }
+                @keyframes blinking {
+                  0% {
+                    opacity: 1;
+                  }
+                  50% {
+                    opacity: 0.6;
+                  }
+                  100% {
+                    opacity: 1;
+                  }
+                }
+
+                .blink {
+                  animation: blinking 1s infinite;
+                }
+
+              }
+            }
+          }
+        }
+
+        .right {
+          flex: 0 0 25%;
+
+          .game-name {
+            @include d-flex(flex, center, center);
+            font-size: 45px;
+            color: $color-title;
+            margin: 0 0 20px 0;
+            background: linear-gradient(to bottom, $color-food, #000000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+
+          .scores {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .high-score-wrapper {
+              .level-title {
+                font-size: 30px;
+                font-weight: bold;
+                margin: 10px 0;
+                color: $color-score;
+
+              }
+
+              #high-score {
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-size: 35px;
+                font-weight: bold;
+                margin: 10px 0;
+                color: $color-high-score;
+              }
+            }
+
+            .score-wrapper {
+              display: flex;
+              justify-content: space-around;
+
+              .score-title, #score {
+                color: $color-score;
+              }
+            }
+          }
+
+          .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 5px $border-3 solid;
+            border-radius: 15px;
+
+            .title-control {
+              font-size: 25px;
+              font-weight: bold;
+              color: #333;
+              margin-bottom: 10px;
+            }
+
+            .game-control-left, .game-control-right {
+              display: flex;
+              justify-content: space-around;
+              width: 100%;
+
+              button {
+                width: 110px;
+                height: 110px;
+                padding: 10px 20px;
+                font-size: 30px;
+                margin: 20px;
+                background-color: #32CD32;
+                color: #ffffff;
+                border: none;
+                border-radius: 15px;
+                cursor: pointer;
+                font-weight: bold;
+                text-align: center;
+                transition: all 0.3s ease;
+              }
+
+              button:hover {
+                background-color: #4CAF50;
+                transform: scale(1.05);
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+              }
+
+            }
+
+          }
+        }
+      }
+    }
+  }
+}

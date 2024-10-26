@@ -1,0 +1,351 @@
+@charset "UTF-8";
+/**
+ * Nguyễn Thị Chúc Ngân
+ * 21130451
+ * Khóa 47
+ * 0869769142
+ * Lớp DH21DTC
+ */
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Permanent Marker", cursive;
+}
+body .main {
+  min-height: 100vh;
+  width: 100%;
+}
+body .main .container {
+  position: relative;
+  margin: 10px 50px;
+}
+body .main .container .background .background-snake {
+  display: block;
+  position: relative;
+  width: 100%;
+  border: 10px solid #5a5a5a;
+  border-radius: 10px;
+}
+body .main .container .snakes .title-game {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 40px;
+  background: linear-gradient(to bottom, #f50529, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body .main .container .snakes .options {
+  display: block;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+}
+body .main .container .snakes .options .game, body .main .container .snakes .options .settings {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+body .main .container .snakes .options .game .card, body .main .container .snakes .options .settings .card {
+  width: 200px;
+  height: 200px;
+  background: #ffffff;
+  margin-bottom: 20px;
+  border: 5px solid #2a2626;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+body .main .container .snakes .options .game .card:hover, body .main .container .snakes .options .settings .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+body .main .container .snakes .popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+body .main .container .snakes .popup-content {
+  max-height: 80%;
+  overflow-y: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+body .main .container .snakes .popup-content button {
+  margin-top: 10px;
+}
+body .main .container .snakes .options_level {
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 20%;
+}
+body .main .container .snakes .options_level .game, body .main .container .snakes .options_level .settings {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+body .main .container .snakes .options_level .game .card, body .main .container .snakes .options_level .settings .card {
+  width: 200px;
+  height: 200px;
+  background: #ffffff;
+  margin-bottom: 20px;
+  border: 5px solid #2a2626;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+body .main .container .snakes .options_level .game .card:hover, body .main .container .snakes .options_level .settings .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+body .main .container-2 {
+  margin: 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+body .main .container-2 .snakes {
+  display: flex;
+  width: 100%;
+}
+body .main .container-2 .snakes .left {
+  flex: 0 0 75%;
+  height: 90vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 15px 0;
+}
+body .main .container-2 .snakes .left .logo {
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+body .main .container-2 .snakes .left .logo #instruction-text {
+  font-size: 30px;
+  color: #32CD32;
+}
+body .main .container-2 .snakes .left .game-border-1 {
+  border: #87CEEB solid 10px;
+  border-radius: 30px;
+  box-shadow: inset 0 0 0 10px #87CEEB;
+  overflow: hidden;
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 {
+  border: #4682B4 solid 8px;
+  border-radius: 26px;
+  box-shadow: inset 0 0 0 10px #4682B4;
+  overflow: hidden;
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 {
+  border: #4169E1 solid 30px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 10px #4169E1;
+  overflow: hidden;
+  /* Thêm animation cho mồi di chuyển */
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 #game-board {
+  background-color: #2a2626;
+  align-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(30, 30px);
+  grid-template-rows: repeat(20, 30px);
+  margin: 5px;
+  height: 630px;
+  width: 900px;
+  overflow: hidden;
+  position: relative;
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 .obstacle {
+  width: 30px;
+  height: 30px;
+  background-color: #0f67be;
+  border-radius: 10px;
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 .obstacle:hover {
+  transform: scale(1.1);
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 .snake {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #2a2626;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgb(183, 84, 84);
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 .snake-head {
+  background-color: #dcbb18;
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 .food {
+  background-color: #fa1606;
+  border: 2px solid #bd4a4a;
+  border-radius: 50%;
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 .poisonous-mushroom {
+  background-color: #cb10ff;
+  border: 2px solid #bd4a4a;
+  border-radius: 30%;
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 .black-hole {
+  width: 30px;
+  height: 30px;
+  background-color: #862e2b;
+  border-radius: 50%;
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 .moving-food {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+}
+@keyframes movingAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+body .main .container-2 .snakes .left .game-border-1 .game-border-2 .game-border-3 .blink {
+  animation: blinking 1s infinite;
+}
+body .main .container-2 .snakes .right {
+  flex: 0 0 25%;
+}
+body .main .container-2 .snakes .right .game-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45px;
+  color: #0f67be;
+  margin: 0 0 20px 0;
+  background: linear-gradient(to bottom, #f50529, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body .main .container-2 .snakes .right .scores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .main .container-2 .snakes .right .scores .high-score-wrapper .level-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #32CD32;
+}
+body .main .container-2 .snakes .right .scores .high-score-wrapper #high-score {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #FFD700;
+}
+body .main .container-2 .snakes .right .scores .score-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+body .main .container-2 .snakes .right .scores .score-wrapper .score-title, body .main .container-2 .snakes .right .scores .score-wrapper #score {
+  color: #32CD32;
+}
+body .main .container-2 .snakes .right .controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px #4169E1 solid;
+  border-radius: 15px;
+}
+body .main .container-2 .snakes .right .controls .title-control {
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+body .main .container-2 .snakes .right .controls .game-control-left, body .main .container-2 .snakes .right .controls .game-control-right {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+body .main .container-2 .snakes .right .controls .game-control-left button, body .main .container-2 .snakes .right .controls .game-control-right button {
+  width: 110px;
+  height: 110px;
+  padding: 10px 20px;
+  font-size: 30px;
+  margin: 20px;
+  background-color: #32CD32;
+  color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+body .main .container-2 .snakes .right .controls .game-control-left button:hover, body .main .container-2 .snakes .right .controls .game-control-right button:hover {
+  background-color: #4CAF50;
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+/*# sourceMappingURL=style.css.map */
